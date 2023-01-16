@@ -2344,3 +2344,602 @@ let c = finalArr.sort((a, b) => {
   }
 });
 console.log(c);
+
+let strings = ["butterfly", "lol", "master", "supercalifragilistic", "jam"];
+console.log(strings);
+
+//find longest word using for of
+function longestString(strings) {
+  let longestWord = "";
+  for (let str of strings) {
+    if (longestWord.length < str.length) {
+      longestWord = str;
+    }
+  }
+  console.log(longestWord);
+  return longestWord;
+}
+
+longestString(strings);
+
+// map to new array
+const beatles = ["john", "paul", "george", "ringo", "paul"];
+const beatlesPrefixed = beatles.map((beatle) => `Mr. ${beatle}`);
+console.log(beatlesPrefixed);
+
+// map to object
+const band = beatlesPrefixed.map((member) => ({
+  name: member,
+  role: "tbd",
+}));
+
+console.log(band);
+
+// creating unique array using new Set
+const uniqueBeatles = [...new Set(beatles)];
+console.log(uniqueBeatles);
+
+// sort the beatles
+const sortedBeatles = uniqueBeatles.sort((a, b) => {
+  if (a < b) {
+    return -1;
+  } else {
+    return 1;
+  }
+});
+
+console.log(sortedBeatles);
+
+//we have an array of student sand ther performance
+// 1.change the array of objects to an array containing only names
+// 2.change the array to [{name: name of student, total: sum of projects}]
+
+const students = [
+  {
+    name: "Tony Parker",
+    firstProject: 80,
+    secondProject: 75,
+  },
+  {
+    name: "Marc Barchini",
+    firstProject: 84,
+    secondProject: 65,
+  },
+  {
+    name: "Claudia Lopez",
+    firstProject: 45,
+    secondProject: 95,
+  },
+  {
+    name: "Carolina Perez",
+    firstProject: 85,
+    secondProject: 72,
+  },
+];
+
+console.log(students);
+
+const newObject = students.map((student) => ({
+  name: student.name,
+  total: student.firstProject + student.secondProject,
+}));
+
+console.log(newObject);
+
+// sort by highest scoring
+// const byScore = newObject.sort((a, b) => {
+//   if (a.total > b.total) {
+//     return -1;
+//   } else {
+//     return 1;
+//   }
+// });
+// console.log(byScore);
+
+// reduce method
+let nums = [2, 5, 7, 9];
+let numsTotal = nums.reduce((a, b) => a + b, 0);
+console.log(numsTotal);
+
+// get toal length of words
+const words = ["foo", "bar", "baz"];
+let wordsTotalLength = words.reduce((total, word) => total + word.length, 0);
+console.log(wordsTotalLength);
+
+const peeps = [
+  { name: "Candice", age: 25 },
+  { name: "Tommy", age: 30 },
+  { name: "Allen", age: 49 },
+  { name: "Nettie", age: 21 },
+  { name: "Stuart", age: 17 },
+];
+
+console.log(peeps);
+
+const totalAge = peeps.reduce((total, person) => total + person.age, 0);
+console.log(totalAge);
+
+const totalAgeFunction = peeps.reduce(function (acc, cur) {
+  return acc + cur.age;
+}, 0);
+console.log(totalAgeFunction);
+
+const product = {
+  name: "AmazonBasics Apple Certified Lightning to USB Cable",
+  price: 7.99,
+  company: "Amazon",
+  reviews: [
+    {
+      user: "Pavel Nedved",
+      comment: "It was really useful, strongly recommended",
+      rate: 4,
+    },
+    {
+      user: "Alvaro Trezeguet",
+      comment: "It lasted 2 days",
+      rate: 1,
+    },
+    {
+      user: "David Recoba",
+      comment: "Awesome",
+      rate: 5,
+    },
+    {
+      user: "Jose Romero",
+      comment: "Good value for money",
+      rate: 4,
+    },
+    {
+      user: "Antonio Cano",
+      comment: "It broke really fast",
+      rate: 2,
+    },
+  ],
+};
+
+console.log(product);
+
+// sum all the rates of all reviews
+const totalRates = product.reviews.reduce(
+  (total, user) => total + user.rate,
+  0
+);
+console.log(totalRates);
+console.log(`the total rate is ${totalRates}`);
+
+// using the FILTER method
+const nums2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+console.log(nums2);
+
+// get even numbers
+const evenNums = nums2.filter((num) => {
+  return num % 2 === 0;
+});
+
+console.log(evenNums);
+
+// filter all numbers larger than 3
+const biggerThan3 = nums2.filter((num) => num > 3);
+console.log(biggerThan3);
+
+const places = [
+  {
+    title: "Awesome Suite 20 away from la Rambla",
+    price: 200,
+    type: "Private Room",
+    pool: true,
+    garage: false,
+  },
+  {
+    title: "Private apartment",
+    price: 190,
+    type: "Entire Place",
+    pool: true,
+    garage: true,
+  },
+  {
+    title: "Apartment with awesome views",
+    price: 400,
+    type: "Entire Place",
+    pool: false,
+    garage: false,
+  },
+  {
+    title: "Apartment in la Rambla",
+    price: 150,
+    type: "Private Room",
+    pool: false,
+    garage: true,
+  },
+  {
+    title: "Comfortable place in Barcelonas center",
+    price: 390,
+    type: "Entire place",
+    pool: true,
+    garage: true,
+  },
+];
+
+console.log(places);
+
+//filter all the places with price > 300, and then get title of places with pool, return array of tiles
+
+const priceLargerThan300 = places.filter((place) => place.price > 300);
+console.log(priceLargerThan300);
+
+const withPool = priceLargerThan300
+  .filter((place) => place.pool) //implicit true statement === place.pool === true
+  .map((place) => place.title);
+
+console.log(withPool);
+
+// using the SORT method
+const cities = ["berlin", "barcelona", "lisbon"];
+console.log(cities.sort());
+
+const nums3 = [23, 7, 12, 45];
+console.log(nums3.sort());
+
+const sortedNums = nums3.sort((a, b) => {
+  if (a < b) {
+    return -1;
+  } else {
+    return 1;
+  }
+});
+
+console.log(sortedNums);
+
+const reviews = [
+  {
+    name: "foo",
+    rate: 9,
+    score: 7,
+  },
+  {
+    name: "bar",
+    rate: 9,
+    score: 5,
+  },
+  {
+    name: "baz",
+    rate: 5,
+    score: 4,
+  },
+];
+
+// sort reviews by ascending; if 2 rates are the same, sort by score
+
+const sortedReviews = reviews.sort((a, b) => {
+  if (a.rate < b.rate) {
+    return -1;
+  } else if (a.rate > b.rate) {
+    return 1;
+  } else {
+    if (a.score < b.score) {
+      return -1;
+    } else {
+      return 1;
+    }
+  }
+});
+
+console.log(sortedReviews);
+
+let testArr = ["berlin", "barcelona", "lisbon"];
+console.log(testArr);
+
+function canPush() {
+  // ... your code goes here
+  if (testArr.length < 10) {
+    console.log(true);
+    return true;
+  } else {
+    console.log(false);
+    return false;
+  }
+}
+
+canPush();
+
+function isEmpty() {
+  // ... your code goes here
+  if (testArr.length == 0) {
+    console.log(true);
+    return true;
+  } else {
+    console.log(false);
+    return false;
+  }
+}
+isEmpty();
+
+function push(item) {
+  // ... your code goes here
+  if (canPush() === true) {
+    testArr.push(item);
+  } else {
+    throw new Error("STACK_OVERFLOW");
+  }
+  console.log(testArr);
+  return testArr;
+}
+push("manila");
+
+function pop() {
+  // ... your code goes here
+  if (isEmpty() === false) {
+    let removed = testArr.pop();
+  }
+  return removed;
+}
+
+const hoursArr = [
+  "1h 8min",
+  "1h 35min",
+  "1h 7min",
+  "2h 33min",
+  "1h 34min",
+  "1h 50min",
+  "1h 27min",
+  "1h 57min",
+  "1h 45min",
+  "1h 27min",
+  "3h 58min",
+  "2h 9min",
+  "1h 42min",
+  "2h 10min",
+  "2h 9min",
+  "2h 5min",
+  "1h 59min",
+  "1h 40min",
+  "1h 42min",
+  "1h 47min",
+  "2h 10min",
+  "2h 50min",
+  "1h 29min",
+  "2h 6min",
+  "1h 44min",
+  "2h 18min",
+  "1h 28min",
+  "1h 50min",
+  "2h 23min",
+  "1h 43min",
+  "2h 11min",
+  "2h 16min",
+  "1h 45min",
+  "1h 48min",
+  "1h 52min",
+  "3h 27min",
+  "1h 57min",
+  "1h 36min",
+  "1h 36min",
+  "1h 50min",
+  "1h 28min",
+  "1h 31min",
+  "2h 41min",
+  "1h 56min",
+  "1h 35min",
+  "3h 32min",
+  "1h 32min",
+  "2h 16min",
+  "2h 1min",
+  "1h 49min",
+  "2h 5min",
+  "3h 6min",
+  "1h 50min",
+  "3h 36min",
+  "2h 9min",
+  "2h 18min",
+  "2h 52min",
+  "1h 35min",
+  "2h 12min",
+  "3h 25min",
+  "3h 2min",
+  "2h 1min",
+  "1h 25min",
+  "2h 6min",
+  "2h 29min",
+  "2h 44min",
+  "1h 50min",
+  "2h 16min",
+  "2h 55min",
+  "1h 42min",
+  "2h 9min",
+  "2h 10min",
+  "3h 22min",
+  "3h 4min",
+  "2h 5min",
+  "2h 4min",
+  "1h 31min",
+  "2h 13min",
+  "3h 18min",
+  "2h 1min",
+  "2h",
+  "1h 53min",
+  "1h 33min",
+  "2h 1min",
+  "3h 3min",
+  "1h 57min",
+  "2h 27min",
+  "1h 34min",
+  "2h 42min",
+  "2h 9min",
+  "2h 4min",
+  "2h 4min",
+  "2h 26min",
+  "2h 29min",
+  "1h 55min",
+  "1h 57min",
+  "3h 11min",
+  "1h 33min",
+  "2h 50min",
+  "2h 11min",
+  "2h 40min",
+  "1h 57min",
+  "3h 49min",
+  "2h 25min",
+  "1h 47min",
+  "1h 56min",
+  "2h 42min",
+  "2h 17min",
+  "2h",
+  "1h 29min",
+  "1h 56min",
+  "1h 38min",
+  "2h 11min",
+  "1h 29min",
+  "1h 50min",
+  "2h 35min",
+  "1h 26min",
+  "2h 8min",
+  "2h 7min",
+  "2h 26min",
+  "1h 43min",
+  "1h 24min",
+  "2h 17min",
+  "1h 58min",
+  "2h 22min",
+  "1h 39min",
+  "2h 10min",
+  "1h 41min",
+  "2h 13min",
+  "3h 15min",
+  "2h 22min",
+  "2h 34min",
+  "1h 28min",
+  "2h 10min",
+  "2h 22min",
+  "1h 41min",
+  "2h 58min",
+  "2h 58min",
+  "2h 50min",
+  "1h 38min",
+  "2h 7min",
+  "1h 46min",
+  "1h 21min",
+  "2h 9min",
+  "2h 8min",
+  "1h 38min",
+  "1h 34min",
+  "1h 29min",
+  "2h 6min",
+  "2h 18min",
+  "1h 56min",
+  "2h 14min",
+  "1h 59min",
+  "1h 47min",
+  "2h 49min",
+  "1h 57min",
+  "2h 2min",
+  "2h 19min",
+  "3h 9min",
+  "2h 16min",
+  "1h 47min",
+  "2h 34min",
+  "1h 38min",
+  "2h 35min",
+  "2h 7min",
+  "1h 53min",
+  "1h 42min",
+  "1h 44min",
+  "2h 15min",
+  "1h 53min",
+  "2h 2min",
+  "1h 32min",
+  "2h 5min",
+  "2h 58min",
+  "2h 8min",
+  "2h 21min",
+  "2h 10min",
+  "1h 41min",
+  "2h 59min",
+  "2h 30min",
+  "1h 40min",
+  "1h 51min",
+  "2h 36min",
+  "2h",
+  "2h 23min",
+  "2h 11min",
+  "3h 21min",
+  "2h 36min",
+  "1h 48min",
+  "1h 59min",
+  "2h 1min",
+  "2h 12min",
+  "1h 49min",
+  "1h 48min",
+  "2h 32min",
+  "2h 12min",
+  "2h 17min",
+  "1h 58min",
+  "2h 37min",
+  "2h 31min",
+  "2h 28min",
+  "2h 2min",
+  "2h 45min",
+  "1h 55min",
+  "2h 38min",
+  "1h 44min",
+  "1h 56min",
+  "2h 32min",
+  "1h 38min",
+  "2h 50min",
+  "2h 9min",
+  "2h 33min",
+  "1h 32min",
+  "1h 36min",
+  "1h 38min",
+  "2h 11min",
+  "2h 28min",
+  "2h 18min",
+  "1h 43min",
+  "2h 10min",
+  "1h 52min",
+  "2h 3min",
+  "2h 26min",
+  "2h 20min",
+  "2h 45min",
+  "1h 55min",
+  "2h 44min",
+  "2h 14min",
+  "2h 33min",
+  "2h 3min",
+  "3h",
+  "2h 29min",
+  "1h 35min",
+  "2h 49min",
+  "2h 33min",
+  "2h 2min",
+  "1h 39min",
+  "1h 47min",
+  "2h",
+  "1h 58min",
+  "2h 8min",
+  "2h 16min",
+  "2h 24min",
+  "2h 41min",
+  "2h 19min",
+  "1h 46min",
+  "2h 8min",
+  "2h 44min",
+  "1h 46min",
+  "2h 17min",
+];
+
+console.log(hoursArr);
+
+const mins = hoursArr
+  .join(",")
+  .replaceAll("h", "")
+  .replaceAll("min", "")
+  .split(",");
+console.log(mins);
+
+setTimeout(() => {
+  console.log("hello from callback hell");
+}, 3000);
+
+setInterval(() => {
+  console.log("hello from interval hel");
+}, 2000);
